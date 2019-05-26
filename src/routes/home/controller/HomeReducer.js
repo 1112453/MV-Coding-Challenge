@@ -1,11 +1,20 @@
 import { 
+    CREATE_POST
 } from './ActionTypes';
 
 const initialState = {
-    items: [],
+    list: [],
+}
+
+function handleCreatePost(state, action){
+    return {
+        ...state,
+        list: state.list.concat(action.payload)
+    }
 }
 
 const ACTION_HANDLES = {
+    CREATE_POST: handleCreatePost 
 }
 
 export function HomeReducer(state = initialState, action){

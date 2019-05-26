@@ -1,8 +1,9 @@
 import CreatePost from '../index';
 import { connect } from 'react-redux';
 
-import { 
-} from '../controller/CreatePostActions';
+import {
+    createPost
+} from '../../home/controller/HomeActions';
 
 const mapStateToProps = (state) => (
     {
@@ -10,6 +11,7 @@ const mapStateToProps = (state) => (
 )
 
 const mapActionCreators = {
+    createPost
 }
 
 export default connect(mapStateToProps, mapActionCreators)(CreatePost);
