@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import {  } from "@material-ui/core/";
+import { Card, CardContent, Typography } from "@material-ui/core/";
 import {  } from "@material-ui/icons/";
 import * as constant from "../../constant/constant";
 
 import Header from '../../component/header/';
+import CardItem from '../../component/cardItem';
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,8 @@ export default class Home extends Component {
   componentDidMount() {}
 
   render() {
-    const {history} = this.props;
+    const {history, list, votePostUp, votePostDown} = this.props;
+    let dataList = list.slice(0, 20);
     return (
       <div className="container">
         <div
@@ -25,6 +27,14 @@ export default class Home extends Component {
         <Header 
           history={history}
         />
+        { dataList && dataList.length > 0 && dataList.map((item, index) => (
+          <CardItem 
+            item={item}
+            votePostUp={votePostUp}
+            votePostDown={votePostDown}
+            key={index}
+          />
+        ))}
         </div>
       </div>
     );

@@ -71,6 +71,7 @@ export default class CreatePost extends Component {
       vote: 0
     };
     this.props.createPost(data);
+    this.props.history.push("/");
   }
 
   componentDidMount() {}

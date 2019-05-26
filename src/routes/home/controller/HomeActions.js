@@ -1,5 +1,7 @@
 import {
-    CREATE_POST
+    CREATE_POST,
+    VOTE_POST_UP,
+    VOTE_POST_DOWN
 } from './ActionTypes';
 
 export function createPost(data){
@@ -9,4 +11,20 @@ export function createPost(data){
           payload: data
         });
       }
+}
+export function votePostUp(id){
+  return dispatch =>{
+      dispatch({
+        type: VOTE_POST_UP,
+        payload: id
+      });
+    }
+}
+export function votePostDown(id){
+  return dispatch =>{
+      dispatch({
+        type: VOTE_POST_DOWN,
+        payload: id
+      });
+    }
 }
