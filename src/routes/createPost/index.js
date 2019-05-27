@@ -56,6 +56,9 @@ export default class CreatePost extends Component {
     this.handleButton = this.handleButton.bind(this);
   }
 
+  /*
+   * Create new post and go to home.
+   */
   handleButton() {
     let data = {
       title: this.state.subject,
