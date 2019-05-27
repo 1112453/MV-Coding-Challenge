@@ -11,9 +11,12 @@ const initialState = {
 
 function handleCreatePost(state, action){
     let item = Object.assign({ id: state.id }, action.payload);
+    let listTemp = state.list.slice();
+    listTemp = listTemp.concat(item);
+    listTemp.sort((a,b) => (a.vote < b.vote) ? 1 : ((b.vote < a.vote) ? -1 : 0));
     return {
         ...state,
-        list: state.list.concat(item),
+        list: listTemp,
         id: state.id + 1
     }
 }
@@ -22,11 +25,7 @@ function handleVotePostUp(state, action){
     let listTemp = state.list.slice();
     let index = listTemp.findIndex(item => item.id === action.payload)
     listTemp[index].vote = listTemp[index].vote + 1;
-    if(index > 0 && listTemp[index - 1].vote < listTemp[index].vote){
-        let itemTemp = listTemp[index - 1];
-        listTemp[index - 1] = listTemp[index];
-        listTemp[index] = itemTemp;
-    }
+    listTemp.sort((a,b) => (a.vote < b.vote) ? 1 : ((b.vote < a.vote) ? -1 : 0));
     return {
         ...state,
         list: listTemp
@@ -36,11 +35,7 @@ function handleVotePostDown(state, action){
     let listTemp = state.list.slice();
     let index = listTemp.findIndex(item => item.id === action.payload)
     listTemp[index].vote = listTemp[index].vote - 1;
-    if(index != (listTemp.length -1) && listTemp[index + 1].vote > listTemp[index].vote){
-        let itemTemp = listTemp[index + 1];
-        listTemp[index + 1] = listTemp[index];
-        listTemp[index] = itemTemp;
-    }
+    listTemp.sort((a,b) => (a.vote < b.vote) ? 1 : ((b.vote < a.vote) ? -1 : 0));
     return {
         ...state,
         list: listTemp

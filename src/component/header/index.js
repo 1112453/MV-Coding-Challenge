@@ -14,7 +14,7 @@ export default class Header extends Component {
     super(props);
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     const { history } = this.props;
@@ -29,7 +29,7 @@ export default class Header extends Component {
       >
         <Toolbar style={{ minHeight: "100%", padding: 0 }}>
           <Button
-            style={{ color: "white" }}
+            style={{ color: "white", outline: "none" }}
             onClick={() => {
               history.push("/");
             }}

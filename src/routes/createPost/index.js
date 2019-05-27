@@ -21,8 +21,7 @@ export default class CreatePost extends Component {
     super(props);
     this.state = {
       subject: "",
-      error: "",
-      textInput: ""
+      description: ""
     };
     this.modules = {
       toolbar: [
@@ -67,7 +66,7 @@ export default class CreatePost extends Component {
   handleButton() {
     let data = {
       title: this.state.subject,
-      description: this.state.textInput,
+      description: this.state.description,
       vote: 0
     };
     this.props.createPost(data);
@@ -116,8 +115,8 @@ export default class CreatePost extends Component {
                 />
                 <ReactQuill
                   theme="snow"
-                  onChange={val => this.setState({ textInput: val })}
-                  value={this.state.textInput}
+                  onChange={val => this.setState({ description: val })}
+                  value={this.state.description}
                   modules={this.modules}
                   formats={this.formats}
                   bounds={".app"}
@@ -126,7 +125,8 @@ export default class CreatePost extends Component {
                 <Button
                   variant="contained"
                   color="primary"
-                  style={{ float: "right", marginTop: 10, marginBottom: 10 }}
+                  disabled={this.state.subject === "" ? true:false}
+                  style={{ float: "right", marginTop: 10, marginBottom: 10, outline: "none" }}
                   onClick={this.handleButton}
                 >
                   Post
