@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  FormControl,
   TextField,
-  FormHelperText,
   Button
 } from "@material-ui/core/";
-import { Create } from "@material-ui/icons/";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import * as constant from "../../constant/constant";
@@ -109,6 +102,9 @@ export default class CreatePost extends Component {
                   fullWidth
                   autoFocus
                   required
+                  inputProps={{
+                    maxLength: 255
+                  }}
                   error={this.state.subject === ""}
                   value={this.state.subject}
                   onChange={e => this.setState({ subject: e.target.value })}

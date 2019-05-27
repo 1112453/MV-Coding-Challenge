@@ -35,7 +35,7 @@ export default class Header extends Component {
             }}
           >
             <Typography
-              variant="title"
+              variant="h6"
               color="inherit"
               className="flex"
               style={{ flex: 1 }}

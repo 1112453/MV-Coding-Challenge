@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import { Card, CardContent, Typography, IconButton } from "@material-ui/core/";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons/";
-export default class CardItem extends Component {
+
+class CardItem extends Component {
     constructor(props) {
       super(props);
     }
@@ -26,13 +28,17 @@ export default class CardItem extends Component {
               <Typography variant="h5" component="h2">
                 {item.title}
               </Typography>
-              <Typography color="textSecondary" gutterBottom>
                 <div dangerouslySetInnerHTML={{ __html: item.description.replace(/\n/g, '')}} />
-              </Typography>
             </CardContent>
             </div>
           </Card>
       );
     }
   }
+  CardItem.propTypes = {
+    item: PropTypes.object.isRequired,
+    votePostUp: PropTypes.func,
+    votePostDown: PropTypes.func
+  };
+  export default CardItem;
   

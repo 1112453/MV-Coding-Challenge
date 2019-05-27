@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Card, CardContent, Typography } from "@material-ui/core/";
-import {  } from "@material-ui/icons/";
 import * as constant from "../../constant/constant";
 
 import Header from '../../component/header/';
